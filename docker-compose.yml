@@ -88,7 +88,12 @@ services:
       - elk
     depends_on:
       - elasticsearch
-
+  coturn:
+    image: coturn/coturn
+    restart: always
+    network_mode: "host"
+    volumes:
+      - ./turnserver.conf:/etc/coturn/turnserver.conf
 networks:
   elk:
     driver: bridge
